@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.xihuani.tyket.R;
+
 public class CustomSpinnerAdapter extends ArrayAdapter<SpinnerItem>{
 
 	

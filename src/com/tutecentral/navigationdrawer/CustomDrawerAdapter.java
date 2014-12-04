@@ -3,7 +3,6 @@ package com.tutecentral.navigationdrawer;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -11,13 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
+
+import com.xihuani.tyket.R;
 
 public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 

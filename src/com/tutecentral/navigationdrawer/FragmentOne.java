@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.xihuani.tyket.R;
+
 public class FragmentOne extends Fragment {
 
 	ImageView ivIcon;

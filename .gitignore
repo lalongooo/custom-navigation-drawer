@@ -20,3 +20,6 @@ proguard/
 **/.DS_Store
 .classpath
 .project
+
+#Ignore the /libs folder
+libs/
