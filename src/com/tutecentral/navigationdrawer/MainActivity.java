@@ -9,6 +9,7 @@ import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -19,7 +20,7 @@ import android.widget.ListView;
 
 import com.xihuani.tyket.R;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
 	private DrawerLayout mDrawerLayout;
 	List<DrawerItem> dataList;

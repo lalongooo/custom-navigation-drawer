@@ -20,6 +20,8 @@ public class SplashActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash);
 
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		TimerTask task = new TimerTask() {
 
 			@Override

@@ -15,6 +15,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
+import com.tutecentral.navigationdrawer.MainActivity;
 import com.xihuani.tyket.R;
 
 public class ActivityLogin extends ActionBarActivity {
@@ -33,7 +34,7 @@ public class ActivityLogin extends ActionBarActivity {
 		 */
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		if ((currentUser != null) && ParseFacebookUtils.isLinked(currentUser)) {
-			// Go to the user info activity
+			goToMainActivity();
 		}
 	}
 
@@ -43,7 +44,7 @@ public class ActivityLogin extends ActionBarActivity {
 		ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
 	}
 
-	public void onLoginClick(View v) {
+	public void onFacebookLoginClick(View v) {
 		progressDialog = ProgressDialog.show(ActivityLogin.this, "", "Logging in...", true);
 
 		/*
@@ -62,11 +63,18 @@ public class ActivityLogin extends ActionBarActivity {
 					Log.d(TAG, "Uh oh. The user cancelled the Facebook login.");
 				} else if (user.isNew()) {
 					Log.d(TAG, "User signed up and logged in through Facebook!");
+					goToMainActivity();
 				} else {
 					Log.d(TAG, "User logged in through Facebook!");
+					goToMainActivity();
 				}
 			}
 		});
+	}
+	
+	private void goToMainActivity() {
+		Intent intent = new Intent(this, MainActivity.class);
+		startActivity(intent);
 	}
 
 }
