@@ -27,6 +27,10 @@ public class ActivityLogin extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
+		/*
+		 * Check if there is a currently logged in
+		 * user and it's linked to a Facebook account.
+		 */
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		if ((currentUser != null) && ParseFacebookUtils.isLinked(currentUser)) {
 			// Go to the user info activity
@@ -40,13 +44,15 @@ public class ActivityLogin extends ActionBarActivity {
 	}
 
 	public void onLoginClick(View v) {
-		progressDialog = ProgressDialog.show(ActivityLogin.this, "",
-				"Logging in...", true);
+		progressDialog = ProgressDialog.show(ActivityLogin.this, "", "Logging in...", true);
 
+		/*
+		 * NOTE: for extended permissions, like "user_about_me", your app must
+		 * be reviewed by the Facebook team
+		 * (https://developers.facebook.com/docs/facebook-login/permissions/) 
+		 * */
+		
 		List<String> permissions = Arrays.asList("public_profile", "email");
-		// NOTE: for extended permissions, like "user_about_me", your app must
-		// be reviewed by the Facebook team
-		// (https://developers.facebook.com/docs/facebook-login/permissions/)
 
 		ParseFacebookUtils.logIn(permissions, this, new LogInCallback() {
 			@Override
