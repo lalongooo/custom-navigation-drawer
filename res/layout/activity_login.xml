@@ -8,8 +8,9 @@
         android:id="@+id/tvAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="212dp"
         android:text="@string/app_name"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/splash_text_size" />
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvAppName"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
         android:background="@drawable/com_facebook_button_blue"
         android:drawableLeft="@drawable/com_facebook_inverse_icon"
         android:drawablePadding="@dimen/com_facebook_likebutton_compound_drawable_padding"

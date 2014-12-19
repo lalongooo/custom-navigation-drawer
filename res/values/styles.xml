@@ -18,11 +18,8 @@
     </style>
 
 	<!-- Theme used for the Splash screen -->
-    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/AppTheme">
-        <item name="android:windowNoTitle">true</item>
+    <style name="Theme.AppCompat.Light.NoActionBar" parent="@style/AppTheme">
         <item name="windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
     </style>
 
 </resources>
