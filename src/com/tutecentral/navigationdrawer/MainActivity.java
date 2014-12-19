@@ -3,15 +3,14 @@ package com.tutecentral.navigationdrawer;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +23,7 @@ public class MainActivity extends ActionBarActivity {
 
 	private DrawerLayout mDrawerLayout;
 	List<DrawerItem> dataList;
-	
+
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 
@@ -32,62 +31,66 @@ public class MainActivity extends ActionBarActivity {
 	private CharSequence mTitle;
 	CustomDrawerAdapter adapter;
 
-	
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		// Initializing		
+		// Initializing
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		dataList = new ArrayList<DrawerItem>();
-		mTitle = mDrawerTitle = getTitle();		
-		
+		mTitle = mDrawerTitle = getTitle();
 
-		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
+				GravityCompat.START);
 
 		// Add Drawer Item to dataList
 		dataList.add(new DrawerItem(true)); // adding a spinner to the list
-		dataList.add(new DrawerItem("My Favorites")); // adding a header to the list
+		dataList.add(new DrawerItem("My Favorites")); // adding a header to the
+														// list
 		dataList.add(new DrawerItem("Message", R.drawable.ic_action_email));
 		dataList.add(new DrawerItem("Likes", R.drawable.ic_action_good));
 		dataList.add(new DrawerItem("Games", R.drawable.ic_action_gamepad));
 		dataList.add(new DrawerItem("Lables", R.drawable.ic_action_labels));
-		dataList.add(new DrawerItem("Main Options"));// adding a header to the list
+		dataList.add(new DrawerItem("Main Options"));// adding a header to the
+														// list
 		dataList.add(new DrawerItem("Search", R.drawable.ic_action_search));
 		dataList.add(new DrawerItem("Cloud", R.drawable.ic_action_cloud));
 		dataList.add(new DrawerItem("Camara", R.drawable.ic_action_camera));
 		dataList.add(new DrawerItem("Video", R.drawable.ic_action_video));
 		dataList.add(new DrawerItem("Groups", R.drawable.ic_action_group));
-		dataList.add(new DrawerItem("Import & Export", R.drawable.ic_action_import_export));
-		dataList.add(new DrawerItem("Other Option")); // adding a header to the list
+		dataList.add(new DrawerItem("Import & Export",
+				R.drawable.ic_action_import_export));
+		dataList.add(new DrawerItem("Other Option")); // adding a header to the
+														// list
 		dataList.add(new DrawerItem("About", R.drawable.ic_action_about));
 		dataList.add(new DrawerItem("Settings", R.drawable.ic_action_settings));
 		dataList.add(new DrawerItem("Help", R.drawable.ic_action_help));
-		adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item, dataList);
+		adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item,
+				dataList);
 
 		mDrawerList.setAdapter(adapter);
 
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.drawable.ic_drawer, R.string.drawer_open,
 				R.string.drawer_close) {
 			public void onDrawerClosed(View view) {
-				getActionBar().setTitle(mTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
+				getSupportActionBar().setTitle(mTitle);
+				supportInvalidateOptionsMenu(); // creates call to
+												// onPrepareOptionsMenu()
+
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				getActionBar().setTitle(mDrawerTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
+				getSupportActionBar().setTitle(mDrawerTitle);
+				supportInvalidateOptionsMenu(); // creates call to
+												// onPrepareOptionsMenu()
 			}
 		};
 
@@ -216,9 +219,8 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		fragment.setArguments(args);
-		FragmentManager frgManager = getFragmentManager();
-		frgManager.beginTransaction().replace(R.id.content_frame, fragment)
-				.commit();
+		FragmentManager frgManager = getSupportFragmentManager();
+		frgManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
 		mDrawerList.setItemChecked(possition, true);
 		setTitle(dataList.get(possition).getItemName());
@@ -229,7 +231,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	public void setTitle(CharSequence title) {
 		mTitle = title;
-		getActionBar().setTitle(mTitle);
+		getSupportActionBar().setTitle(mTitle);
 	}
 
 	@Override
