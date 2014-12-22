@@ -6,6 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="drawer_open">Open drawer</string>
     <string name="drawer_close">Close drawer</string>
+    <string name="drawer_profile_picture">Profile picture</string>
 
     <!-- App IDs, Keys -->
     <string name="parse_application_id">KMfIuAwXj3tbieGpqat7ivmFMPRWp77Q45Yi8xjX</string>

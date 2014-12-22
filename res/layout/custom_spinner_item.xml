@@ -6,14 +6,17 @@
         android:id="@+id/left_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/drawer_profile_picture" />
 
     <TextView
         android:id="@+id/text_main_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/left_pic"
         android:layout_toRightOf="@+id/left_pic"
         android:padding="0dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -26,6 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_main_name"
         android:layout_marginLeft="5dip"
+        android:layout_marginStart="5dip"
+        android:layout_toEndOf="@+id/left_pic"
         android:layout_toRightOf="@+id/left_pic"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#777777" />
