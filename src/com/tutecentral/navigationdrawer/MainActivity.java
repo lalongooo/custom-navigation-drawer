@@ -45,7 +45,10 @@ public class MainActivity extends ActionBarActivity {
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
 		// Add Drawer Item to dataList
-		dataList.add(new DrawerItem(true)); // adding a spinner to the list
+		
+		UserProfileDrawerItem userProfileDrawerItem = new UserProfileDrawerItem(R.drawable.user1 , "Jorge E. Hernández Hernández", "hdez.jeduardo@gmail.com");
+		
+		dataList.add(new DrawerItem("Profile", true, userProfileDrawerItem)); // adding a profile section
 		dataList.add(new DrawerItem("My Favorites")); // adding a header to the list
 		dataList.add(new DrawerItem("Message", R.drawable.ic_action_email));
 		dataList.add(new DrawerItem("Likes", R.drawable.ic_action_good));
@@ -71,20 +74,15 @@ public class MainActivity extends ActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
 
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, R.string.drawer_open,
-				R.string.drawer_close) {
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
 			public void onDrawerClosed(View view) {
 				getSupportActionBar().setTitle(mTitle);
-				supportInvalidateOptionsMenu(); // creates call to
-												// onPrepareOptionsMenu()
-
+				supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 			}
 
 			public void onDrawerOpened(View drawerView) {
 				getSupportActionBar().setTitle(mDrawerTitle);
-				supportInvalidateOptionsMenu(); // creates call to
-												// onPrepareOptionsMenu()
+				supportInvalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 			}
 		};
 
@@ -92,8 +90,7 @@ public class MainActivity extends ActionBarActivity {
 
 		if (savedInstanceState == null) {
 
-			if (dataList.get(0).isSpinner()
-					& dataList.get(1).getTitle() != null) {
+			if (dataList.get(0).isProfileSection() & dataList.get(1).getTitle() != null) {
 				SelectItem(2);
 			} else if (dataList.get(0).getTitle() != null) {
 				SelectItem(1);
@@ -115,8 +112,14 @@ public class MainActivity extends ActionBarActivity {
 
 		Fragment fragment = null;
 		Bundle args = new Bundle();
+		
 		switch (possition) {
 
+		case 0:
+			fragment = new FragmentThree();
+			args.putString(FragmentThree.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList.get(possition).getUserProfileDrawerItem().getDrawableResID());
+			break;		
 		case 2:
 			fragment = new FragmentThree();
 			args.putString(FragmentThree.ITEM_NAME, dataList.get(possition).getItemName());
@@ -129,80 +132,58 @@ public class MainActivity extends ActionBarActivity {
 			break;
 		case 4:
 			fragment = new FragmentTwo();
-			args.putString(FragmentTwo.ITEM_NAME, dataList.get(possition)
-					.getItemName());
-			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(possition)
-					.getImgResID());
+			args.putString(FragmentTwo.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(possition).getImgResID());
 			break;
 		case 5:
 			fragment = new FragmentThree();
-			args.putString(FragmentThree.ITEM_NAME, dataList.get(possition)
-					.getItemName());
-			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList
-					.get(possition).getImgResID());
+			args.putString(FragmentThree.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList.get(possition).getImgResID());
 			break;
 		case 7:
 			fragment = new FragmentTwo();
-			args.putString(FragmentTwo.ITEM_NAME, dataList.get(possition)
-					.getItemName());
-			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(possition)
-					.getImgResID());
+			args.putString(FragmentTwo.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(possition).getImgResID());
 			break;
 		case 8:
 			fragment = new FragmentThree();
-			args.putString(FragmentThree.ITEM_NAME, dataList.get(possition)
-					.getItemName());
-			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList
-					.get(possition).getImgResID());
+			args.putString(FragmentThree.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList.get(possition).getImgResID());
 			break;
 		case 9:
 			fragment = new FragmentOne();
-			args.putString(FragmentOne.ITEM_NAME, dataList.get(possition)
-					.getItemName());
-			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(possition)
-					.getImgResID());
+			args.putString(FragmentOne.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(possition).getImgResID());
 			break;
 		case 10:
 			fragment = new FragmentTwo();
-			args.putString(FragmentTwo.ITEM_NAME, dataList.get(possition)
-					.getItemName());
-			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(possition)
-					.getImgResID());
+			args.putString(FragmentTwo.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(possition).getImgResID());
 			break;
 		case 11:
 			fragment = new FragmentThree();
-			args.putString(FragmentThree.ITEM_NAME, dataList.get(possition)
-					.getItemName());
-			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList
-					.get(possition).getImgResID());
+			args.putString(FragmentThree.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList.get(possition).getImgResID());
 			break;
 		case 12:
 			fragment = new FragmentOne();
-			args.putString(FragmentOne.ITEM_NAME, dataList.get(possition)
-					.getItemName());
-			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(possition)
-					.getImgResID());
+			args.putString(FragmentOne.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(possition).getImgResID());
 			break;
 		case 14:
 			fragment = new FragmentThree();
-			args.putString(FragmentThree.ITEM_NAME, dataList.get(possition)
-					.getItemName());
-			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList
-					.get(possition).getImgResID());
+			args.putString(FragmentThree.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList.get(possition).getImgResID());
 			break;
 		case 15:
 			fragment = new FragmentOne();
-			args.putString(FragmentOne.ITEM_NAME, dataList.get(possition)
-					.getItemName());
-			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(possition)
-					.getImgResID());
+			args.putString(FragmentOne.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(possition).getImgResID());
 			break;
 		case 16:
 			fragment = new FragmentTwo();
-			args.putString(FragmentTwo.ITEM_NAME, dataList.get(possition)
-					.getItemName());
-			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(possition)
-					.getImgResID());
+			args.putString(FragmentTwo.ITEM_NAME, dataList.get(possition).getItemName());
+			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(possition).getImgResID());
 			break;
 		default:
 			break;
@@ -249,11 +230,9 @@ public class MainActivity extends ActionBarActivity {
 		return false;
 	}
 
-	private class DrawerItemClickListener implements
-			ListView.OnItemClickListener {
+	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			if (dataList.get(position).getTitle() == null) {
 				SelectItem(position);
 			}

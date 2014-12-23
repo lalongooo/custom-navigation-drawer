@@ -14,6 +14,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,10 +35,10 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 	}
 
 	private static class DrawerItemHolder {
-		TextView ItemName, title;
-		ImageView icon;
-		LinearLayout headerLayout, itemLayout, spinnerLayout;
-		Spinner spinner;
+		TextView itemName, title, profileName, profileEmail;
+		ImageView icon, profilePick;
+		LinearLayout headerLayout, itemLayout;
+		RelativeLayout profileLayout;
 	}
 
 	@Override
@@ -51,13 +52,19 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 			drawerHolder = new DrawerItemHolder();
 
 			view = inflater.inflate(layoutResID, parent, false);
-			drawerHolder.ItemName = (TextView) view.findViewById(R.id.drawer_itemName);
+			
+			drawerHolder.profilePick = (ImageView) view.findViewById(R.id.left_pic);
+			drawerHolder.profileName = (TextView) view.findViewById(R.id.text_main_name);
+			drawerHolder.profileEmail = (TextView) view.findViewById(R.id.sub_text_email);
+			
+			drawerHolder.itemName = (TextView) view.findViewById(R.id.drawer_itemName);
 			drawerHolder.icon = (ImageView) view.findViewById(R.id.drawer_icon);
-			drawerHolder.spinner = (Spinner) view.findViewById(R.id.drawerSpinner);
 			drawerHolder.title = (TextView) view.findViewById(R.id.drawerTitle);
+			
+			drawerHolder.profileLayout = (RelativeLayout) view.findViewById(R.id.profileLayout);
 			drawerHolder.headerLayout = (LinearLayout) view.findViewById(R.id.headerLayout);
 			drawerHolder.itemLayout = (LinearLayout) view.findViewById(R.id.itemLayout);
-			drawerHolder.spinnerLayout = (LinearLayout) view.findViewById(R.id.spinnerLayout);
+						
 			view.setTag(drawerHolder);
 
 		} else {
@@ -67,45 +74,49 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 
 		DrawerItem dItem = (DrawerItem) this.drawerItemList.get(position);
 
-		if (dItem.isSpinner()) {
+		if (dItem.isProfileSection()) {
+			drawerHolder.profileLayout.setVisibility(LinearLayout.VISIBLE);
 			drawerHolder.headerLayout.setVisibility(LinearLayout.INVISIBLE);
 			drawerHolder.itemLayout.setVisibility(LinearLayout.INVISIBLE);
-			drawerHolder.spinnerLayout.setVisibility(LinearLayout.VISIBLE);
 
-			List<SpinnerItem> userList = new ArrayList<SpinnerItem>();
-			userList.add(new SpinnerItem(R.drawable.user1, "Ahamed Ishak","ishak@gmail.com"));
-			userList.add(new SpinnerItem(R.drawable.user2, "Brain Jekob","brain.j@gmail.com"));
-
-			CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(context, R.layout.custom_spinner_item, userList);
-
-			drawerHolder.spinner.setAdapter(adapter);
-			drawerHolder.spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-						@Override
-						public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-							Toast.makeText(context, "User Changed", Toast.LENGTH_SHORT).show();
-						}
-						@Override
-						public void onNothingSelected(AdapterView<?> arg0) {
-
-						}
-					});
+			drawerHolder.profilePick.setImageDrawable(view.getResources().getDrawable(R.drawable.user1));
+			drawerHolder.profileName.setText(dItem.getUserProfileDrawerItem().getName());
+			drawerHolder.profileEmail.setText(dItem.getUserProfileDrawerItem().getEmail());
+			
+//			List<UserProfileDrawerItem> userList = new ArrayList<UserProfileDrawerItem>();
+//			userList.add(new UserProfileDrawerItem(R.drawable.user1, "Ahamed Ishak","ishak@gmail.com"));
+//			userList.add(new UserProfileDrawerItem(R.drawable.user2, "Brain Jekob","brain.j@gmail.com"));
+//
+//			CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(context, R.layout.custom_spinner_item, userList);
+//
+//			drawerHolder.spinner.setAdapter(adapter);
+//			drawerHolder.spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+//
+//						@Override
+//						public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+//							Toast.makeText(context, "User Changed", Toast.LENGTH_SHORT).show();
+//						}
+//						@Override
+//						public void onNothingSelected(AdapterView<?> arg0) {
+//
+//						}
+//					});
 
 		} else if (dItem.getTitle() != null) {
 			
 			drawerHolder.headerLayout.setVisibility(LinearLayout.VISIBLE);
 			drawerHolder.itemLayout.setVisibility(LinearLayout.INVISIBLE);
-			drawerHolder.spinnerLayout.setVisibility(LinearLayout.INVISIBLE);
+			drawerHolder.profileLayout.setVisibility(LinearLayout.INVISIBLE);
 			drawerHolder.title.setText(dItem.getTitle());
 			Log.d("Getview", "Passed4");
 			
 		} else {
 
 			drawerHolder.headerLayout.setVisibility(LinearLayout.INVISIBLE);
-			drawerHolder.spinnerLayout.setVisibility(LinearLayout.INVISIBLE);
+			drawerHolder.profileLayout.setVisibility(LinearLayout.INVISIBLE);
 			drawerHolder.itemLayout.setVisibility(LinearLayout.VISIBLE);
 			drawerHolder.icon.setImageDrawable(view.getResources().getDrawable(dItem.getImgResID()));
-			drawerHolder.ItemName.setText(dItem.getItemName());
+			drawerHolder.itemName.setText(dItem.getItemName());
 			Log.d("Getview", "Passed5");
 			
 		}

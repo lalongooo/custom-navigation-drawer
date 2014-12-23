@@ -13,25 +13,25 @@ import android.widget.TextView;
 
 import com.xihuani.tyket.R;
 
-public class CustomSpinnerAdapter extends ArrayAdapter<SpinnerItem> {
+public class CustomSpinnerAdapter extends ArrayAdapter<UserProfileDrawerItem> {
 
 	Context context;
 	int layoutResID;
-	List<SpinnerItem> spinnerData;
+	List<UserProfileDrawerItem> profileData;
 
-	public CustomSpinnerAdapter(Context context, int layoutResourceID, int textViewResourceId, List<SpinnerItem> spinnerDataList) {
+	public CustomSpinnerAdapter(Context context, int layoutResourceID, int textViewResourceId, List<UserProfileDrawerItem> spinnerDataList) {
 		super(context, layoutResourceID, textViewResourceId, spinnerDataList);
 		this.context = context;
 		this.layoutResID = layoutResourceID;
-		this.spinnerData = spinnerDataList;
+		this.profileData = spinnerDataList;
 
 	}
 
-	public CustomSpinnerAdapter(Context context, int layoutResourceID, List<SpinnerItem> spinnerDataList) {
+	public CustomSpinnerAdapter(Context context, int layoutResourceID, List<UserProfileDrawerItem> spinnerDataList) {
 		super(context, layoutResourceID, spinnerDataList);
 		this.context = context;
 		this.layoutResID = layoutResourceID;
-		this.spinnerData = spinnerDataList;
+		this.profileData = spinnerDataList;
 
 	}
 	
@@ -61,12 +61,11 @@ public class CustomSpinnerAdapter extends ArrayAdapter<SpinnerItem> {
 
 		}
 
-		SpinnerItem spinnerItem = spinnerData.get(position);
+		UserProfileDrawerItem profileItem = profileData.get(position);
 
-		holder.userImage.setImageDrawable(row.getResources().getDrawable(
-				spinnerItem.getDrawableResID()));
-		holder.name.setText(spinnerItem.getName());
-		holder.email.setText(spinnerItem.getEmail());
+		holder.userImage.setImageDrawable(row.getResources().getDrawable(profileItem.getDrawableResID()));
+		holder.name.setText(profileItem.getName());
+		holder.email.setText(profileItem.getEmail());
 
 		return row;
 

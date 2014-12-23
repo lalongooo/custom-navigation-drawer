@@ -5,16 +5,20 @@ public class DrawerItem {
 	String ItemName;
 	int imgResID;
 	String title;
-	boolean isSpinner;
+	boolean isProfileSection;
+	UserProfileDrawerItem userProfileDrawerItem;
+	
 
 	public DrawerItem(String itemName, int imgResID) {
 		ItemName = itemName;
 		this.imgResID = imgResID;
 	}
 
-	public DrawerItem(boolean isSpinner) {
+	public DrawerItem(String itemName, boolean isSpinner, UserProfileDrawerItem userProfileDrawerItem) {
 		this(null, 0);
-		this.isSpinner = isSpinner;
+		ItemName = itemName;
+		this.isProfileSection = isSpinner;
+		this.userProfileDrawerItem = userProfileDrawerItem;
 	}
 
 	public DrawerItem(String title) {
@@ -46,8 +50,16 @@ public class DrawerItem {
 		this.title = title;
 	}
 
-	public boolean isSpinner() {
-		return isSpinner;
+	public boolean isProfileSection() {
+		return isProfileSection;
+	}
+
+	public UserProfileDrawerItem getUserProfileDrawerItem() {
+		return userProfileDrawerItem;
+	}
+
+	public void setUserProfileDrawerItem(UserProfileDrawerItem userProfileDrawerItem) {
+		this.userProfileDrawerItem = userProfileDrawerItem;
 	}
 
 }

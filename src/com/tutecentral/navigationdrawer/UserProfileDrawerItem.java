@@ -1,12 +1,12 @@
 package com.tutecentral.navigationdrawer;
 
-public class SpinnerItem {
+public class UserProfileDrawerItem {
 
 	int drawableResID;
 	String name;
 	String email;
 
-	public SpinnerItem(int drawableResID, String name, String email) {
+	public UserProfileDrawerItem(int drawableResID, String name, String email) {
 		super();
 		this.drawableResID = drawableResID;
 		this.name = name;

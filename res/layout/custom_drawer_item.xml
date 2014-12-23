@@ -3,19 +3,44 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <LinearLayout
-        android:id="@+id/spinnerLayout"
+    <RelativeLayout
+        android:id="@+id/profileLayout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content" >
 
-        <Spinner
-            android:id="@+id/drawerSpinner"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/left_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:contentDescription="@string/drawer_profile_picture" />
+
+        <TextView
+            android:id="@+id/text_main_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/left_pic"
+            android:layout_toRightOf="@+id/left_pic"
+            android:padding="0dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#1d97dd"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sub_text_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_main_name"
+            android:layout_marginLeft="5dip"
+            android:layout_marginStart="5dip"
+            android:layout_toEndOf="@+id/left_pic"
+            android:layout_toRightOf="@+id/left_pic"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#777777" />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/headerLayout"
