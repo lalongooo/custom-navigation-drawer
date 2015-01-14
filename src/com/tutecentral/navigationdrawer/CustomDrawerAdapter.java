@@ -1,7 +1,9 @@
 package com.tutecentral.navigationdrawer;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,20 +11,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.facebook.widget.ProfilePictureView;
+import com.parse.ParseUser;
 import com.xihuani.tyket.R;
 
 public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 
+	private static final String TAG = "CustomDrawerAdapter";
 	Context context;
 	List<DrawerItem> drawerItemList;
 	int layoutResID;
@@ -36,7 +37,8 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 
 	private static class DrawerItemHolder {
 		TextView itemName, title, profileName, profileEmail;
-		ImageView icon, profilePick;
+		ImageView icon;
+		ProfilePictureView profilePick;
 		LinearLayout headerLayout, itemLayout;
 		RelativeLayout profileLayout;
 	}
@@ -53,7 +55,7 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 
 			view = inflater.inflate(layoutResID, parent, false);
 			
-			drawerHolder.profilePick = (ImageView) view.findViewById(R.id.left_pic);
+			drawerHolder.profilePick = (ProfilePictureView) view.findViewById(R.id.userProfilePicture);
 			drawerHolder.profileName = (TextView) view.findViewById(R.id.text_main_name);
 			drawerHolder.profileEmail = (TextView) view.findViewById(R.id.sub_text_email);
 			
@@ -78,10 +80,38 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 			drawerHolder.profileLayout.setVisibility(LinearLayout.VISIBLE);
 			drawerHolder.headerLayout.setVisibility(LinearLayout.INVISIBLE);
 			drawerHolder.itemLayout.setVisibility(LinearLayout.INVISIBLE);
+			
+			ParseUser currentUser = ParseUser.getCurrentUser();
 
-			drawerHolder.profilePick.setImageDrawable(view.getResources().getDrawable(R.drawable.user1));
-			drawerHolder.profileName.setText(dItem.getUserProfileDrawerItem().getName());
-			drawerHolder.profileEmail.setText(dItem.getUserProfileDrawerItem().getEmail());
+			try {
+				if (currentUser.has("profile")) {
+					JSONObject userProfile = currentUser.getJSONObject("profile");
+
+					if (userProfile.has("facebookId")) {
+						drawerHolder.profilePick.setProfileId(userProfile.getString("facebookId"));
+					} else {
+						drawerHolder.profilePick.setProfileId(null);
+					}
+
+					if (userProfile.has("name")) {
+						drawerHolder.profileName.setText(userProfile.getString("name"));
+					} else {
+						drawerHolder.profileName.setText("");
+					}
+
+					if (userProfile.has("email")) {
+						drawerHolder.profileEmail.setText(userProfile.getString("email"));
+					} else {
+						drawerHolder.profileEmail.setText("");
+					}
+
+				}
+
+			} catch (JSONException e) {
+				Log.d(TAG, "Error parsing saved user data.");
+			}
+
+		
 			
 //			List<UserProfileDrawerItem> userList = new ArrayList<UserProfileDrawerItem>();
 //			userList.add(new UserProfileDrawerItem(R.drawable.user1, "Ahamed Ishak","ishak@gmail.com"));

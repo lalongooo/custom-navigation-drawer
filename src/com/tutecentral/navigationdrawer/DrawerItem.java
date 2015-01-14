@@ -1,24 +1,22 @@
 package com.tutecentral.navigationdrawer;
 
+
 public class DrawerItem {
 
 	String ItemName;
 	int imgResID;
 	String title;
 	boolean isProfileSection;
-	UserProfileDrawerItem userProfileDrawerItem;
-	
 
 	public DrawerItem(String itemName, int imgResID) {
 		ItemName = itemName;
 		this.imgResID = imgResID;
 	}
 
-	public DrawerItem(String itemName, boolean isSpinner, UserProfileDrawerItem userProfileDrawerItem) {
+	public DrawerItem(String itemName, boolean isProfileSection) {
 		this(null, 0);
 		ItemName = itemName;
-		this.isProfileSection = isSpinner;
-		this.userProfileDrawerItem = userProfileDrawerItem;
+		this.isProfileSection = isProfileSection;
 	}
 
 	public DrawerItem(String title) {
@@ -52,14 +50,6 @@ public class DrawerItem {
 
 	public boolean isProfileSection() {
 		return isProfileSection;
-	}
-
-	public UserProfileDrawerItem getUserProfileDrawerItem() {
-		return userProfileDrawerItem;
-	}
-
-	public void setUserProfileDrawerItem(UserProfileDrawerItem userProfileDrawerItem) {
-		this.userProfileDrawerItem = userProfileDrawerItem;
 	}
 
 }
