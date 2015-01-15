@@ -32,6 +32,7 @@ public class ActivityLogin extends ActionBarActivity {
 		 * Check if there is a currently logged in
 		 * user and it's linked to a Facebook account.
 		 */
+		
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		if ((currentUser != null) && ParseFacebookUtils.isLinked(currentUser)) {
 			goToMainActivity();
