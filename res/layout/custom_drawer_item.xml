@@ -30,7 +30,7 @@
             android:padding="0dp"
             android:text="Jorge E. Hernández"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#1d97dd"
+            android:textColor="@android:color/white"
             android:textStyle="bold" />
 
         <TextView
@@ -44,7 +44,7 @@
             android:layout_toRightOf="@+id/userProfilePicture"
             android:text="hdez.jeduardo@gmail.com"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#777777" />
+            android:textColor="@android:color/white" />
     </RelativeLayout>
 
     <LinearLayout
