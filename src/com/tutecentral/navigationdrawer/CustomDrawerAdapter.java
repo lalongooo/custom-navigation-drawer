@@ -18,8 +18,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.widget.ProfilePictureView;
+import com.kentzi.R;
 import com.parse.ParseUser;
-import com.xihuani.tyket.R;
 
 public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 

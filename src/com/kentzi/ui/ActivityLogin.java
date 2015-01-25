@@ -1,4 +1,4 @@
-package com.xihuani.tyket.ui;
+package com.kentzi.ui;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,12 +11,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.kentzi.R;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 import com.tutecentral.navigationdrawer.MainActivity;
-import com.xihuani.tyket.R;
 
 public class ActivityLogin extends ActionBarActivity {
 

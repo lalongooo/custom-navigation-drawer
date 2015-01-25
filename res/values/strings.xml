@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Tyket</string>
+    <string name="app_name">Kentzi</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="drawer_open">Open drawer</string>
@@ -12,5 +12,10 @@
     <string name="parse_application_id">KMfIuAwXj3tbieGpqat7ivmFMPRWp77Q45Yi8xjX</string>
     <string name="parse_client_key">OtMQMK8K6Ujq9NAXO5bfHN1S0CETKfMDqiAVQa3m</string>
     <string name="facebook_app_id">143269149215368</string>
+    
+    <string name="app_overview_1st_item_text">This is a test example</string>
+    <string name="app_overview_2nd_item_text">This is a test example</string>
+    <string name="app_overview_3rd_item_text">This is a test example</string>
+    <string name="app_overview_4th_item_text">This is a test example</string>
 
 </resources>

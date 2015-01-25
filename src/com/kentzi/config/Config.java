@@ -1,4 +1,4 @@
-package com.xihuani.tyket.config;
+package com.kentzi.config;
 
 public class Config {
 	

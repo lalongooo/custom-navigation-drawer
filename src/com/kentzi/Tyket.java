@@ -1,4 +1,4 @@
-package com.xihuani.tyket;
+package com.kentzi;
 
 import android.app.Application;
 

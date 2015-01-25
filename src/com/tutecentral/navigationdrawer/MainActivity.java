@@ -27,10 +27,10 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphUser;
+import com.kentzi.R;
+import com.kentzi.ui.ActivityLogin;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
-import com.xihuani.tyket.R;
-import com.xihuani.tyket.ui.ActivityLogin;
 
 public class MainActivity extends ActionBarActivity {
 

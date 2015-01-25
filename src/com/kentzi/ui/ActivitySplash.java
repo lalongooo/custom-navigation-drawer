@@ -1,4 +1,4 @@
-package com.xihuani.tyket.ui;
+package com.kentzi.ui;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
 
-import com.xihuani.tyket.R;
-import com.xihuani.tyket.config.Config;
+import com.kentzi.R;
+import com.kentzi.config.Config;
 
-public class SplashActivity extends ActionBarActivity {
+public class ActivitySplash extends ActionBarActivity {
 
 	TextView myInput;
 
@@ -24,7 +24,7 @@ public class SplashActivity extends ActionBarActivity {
 
 			@Override
 			public void run() {
-				Intent mainIntent = new Intent().setClass(SplashActivity.this, ActivityLogin.class);
+				Intent mainIntent = new Intent().setClass(ActivitySplash.this, ActivityLogin.class);
 				startActivity(mainIntent);
 				finish();
 			}
